@@ -23,3 +23,9 @@ end
     notifies :reload, 'service[td-agent]'
   end
 end
+
+directory '/var/log/fluent' do
+  owner 'td-agent'
+  group 'td-agent'
+  mode 0755
+end
