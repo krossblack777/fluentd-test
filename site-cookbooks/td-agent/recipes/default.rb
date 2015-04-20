@@ -16,3 +16,10 @@ service 'td-agent' do
   action [:enable, :start]
   supports restart: true, reload: true, status: true
 end
+
+%w(fluent-plugin-forest fluent-plugin-s3).each do |gem|
+  gem_package gem do
+    gem_binary '/opt/td-agent/embedded/bin/fluent-gem'
+    notifies :reload, 'service[td-agent]'
+  end
+end
