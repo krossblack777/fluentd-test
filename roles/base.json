@@ -1,0 +1,18 @@
+{
+    "name": "base",
+    "description": "base role",
+    "json_class": "Chef::Role",
+
+    "override_attributes": {
+            "ruby": {
+                        "version": "2.2.2",
+                        "checksum": "e62af2e20c07d0f335979b8a65a498e4a5c5799f545b2589aa1adc740af4924c"
+                    }
+        },
+
+    "run_list": [
+            "recipe[git]",
+            "recipe[td-agent]",
+            "recipe[nginx]"
+        ]
+}
