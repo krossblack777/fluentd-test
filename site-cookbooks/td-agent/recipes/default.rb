@@ -29,3 +29,13 @@ directory '/var/log/fluent' do
   group 'td-agent'
   mode 0755
 end
+
+directory '/etc/td-agent/conf.d'
+
+cookbook_file '/etc/td-agent/td-agent.conf' do
+  notifies :reload, 'service[td-agent]'
+end
+
+cookbook_file '/etc/td-agent/conf.d/forwarder.conf' do
+  notifies :reload, 'service[td-agent]'
+end
